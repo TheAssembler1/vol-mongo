@@ -1,0 +1,11 @@
+# folders
+build
+bin
+autom4te.cache
+
+# files
+configure
+
+# file extensions
+*.m4
+*.in

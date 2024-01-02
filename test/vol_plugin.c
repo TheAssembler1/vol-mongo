@@ -49,7 +49,6 @@
 #define FAIL_PUTS_ERROR(s)  {H5_FAILED(); AT(); puts(s); goto error;} 
 
 
-
 /*-------------------------------------------------------------------------
  * Function:    test_registration_by_value()
  *
@@ -105,7 +104,6 @@ error:
 
 } /* end test_registration_by_value() */
 
-
 /*-------------------------------------------------------------------------
  * Function:    test_registration_by_name()
  *
@@ -161,7 +159,6 @@ error:
 
 } /* end test_registration_by_name() */
 
-
 /*-------------------------------------------------------------------------
  * Function:    test_multiple_registration()
  *
@@ -229,7 +226,6 @@ error:
 
 } /* end test_multiple_registration() */
 
-
 /*-------------------------------------------------------------------------
  * Function:    test_getters()
  *
@@ -279,7 +275,6 @@ error:
 
 } /* end test_getters() */
 
-
 /*-------------------------------------------------------------------------
  * Function:    main
  *
