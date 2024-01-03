@@ -1,0 +1,53 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DHAVE_CONFIG_H",
+      "-I.",
+      "-I../../src",
+      "-I..",
+      "-I/usr/local/hdf5/include",
+      "-I/home/theassembler/src/hdf5-1.14.3/src/H5FDsubfiling",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-fPIC",
+      "-g",
+      "-O2",
+      "-c",
+      "-fPIC",
+      "-DPIC",
+      "-o",
+      ".libs/template_vol_connector.o",
+      "../../src/template_vol_connector.c"
+    ],
+    "directory": "/home/theassembler/src/vol-mongo/build/src",
+    "file": "/home/theassembler/src/vol-mongo/src/template_vol_connector.c",
+    "output": "/home/theassembler/src/vol-mongo/build/src/.libs/template_vol_connector.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-DHAVE_CONFIG_H",
+      "-I.",
+      "-I../../test",
+      "-I..",
+      "-I/usr/local/hdf5/include",
+      "-I/home/theassembler/src/hdf5-1.14.3/src/H5FDsubfiling",
+      "-I../../src",
+      "-I../src",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-g",
+      "-O2",
+      "-c",
+      "-o",
+      "vol_plugin.o",
+      "../../test/vol_plugin.c"
+    ],
+    "directory": "/home/theassembler/src/vol-mongo/build/test",
+    "file": "/home/theassembler/src/vol-mongo/test/vol_plugin.c",
+    "output": "/home/theassembler/src/vol-mongo/build/test/vol_plugin.o"
+  }
+]
