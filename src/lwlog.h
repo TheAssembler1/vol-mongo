@@ -13,7 +13,7 @@
 #include <string.h>
 
 #ifndef LOG_LEVEL
-#define LOG_LEVEL (7)
+#define LOG_LEVEL (9)
 #endif
 
 #ifndef LOG_COLOR
@@ -29,6 +29,7 @@
 #define NOTICE (5)
 #define INFO (6)
 #define DEBUG (7)
+#define TRACE (8)
 
 // colors
 #define NONE                 "\e[0m"
@@ -70,8 +71,15 @@
 #define lwlog_notice(M, ...)  do { fprintf(stderr, CYAN   "[NOTICE]  " "%s (%s:%d) " NONE M YELLOW " errno: %s\n" NONE, __func__, __FILE__, __LINE__, ##__VA_ARGS__, clean_errno()); } while(0)
 #define lwlog_info(M, ...)    do { fprintf(stderr, GREEN  "[INFO]    " "%s (%s:%d) " NONE M "\n", __func__, __FILE__, __LINE__, ##__VA_ARGS__); } while(0)
 #define lwlog_debug(M, ...)   do { fprintf(stderr, GRAY   "[DEBUG]   " "%s (%s:%d) " NONE M "\n", __func__, __FILE__, __LINE__, ##__VA_ARGS__); } while(0)
+#define lwlog_trace(M, ...)   do { fprintf(stderr, GRAY   "[TRACE]   " "%s (%s:%d) " NONE M "\n", __func__, __FILE__, __LINE__, ##__VA_ARGS__); } while(0)
+#define UNIMPLEMENTED_ERROR() lwlog_emerg("function not implemented!")
 
 /* LOG_LEVEL controls */
+#if LOG_LEVEL < TRACE
+#undef lwlog_trace
+#define lwlog_trace(M, ...) do{}while(0)
+#endif
+
 #if LOG_LEVEL < DEBUG
 #undef lwlog_debug
 #define lwlog_debug(M, ...) do{}while(0)
@@ -111,6 +119,7 @@
 #undef lwlog_emerg
 #define lwlog_emerg(M, ...) do{}while(0)
 #endif
+
 
 /* LOG_COLOR controls */
 #if LOG_COLOR < 1

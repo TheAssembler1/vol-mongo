@@ -1,7 +1,8 @@
 #include "vol_mongo_introspect.h"
 
-herr_t vol_mongo_introspect_opt_query_pt(void* obj, H5VL_subclass_t subcls,
+herr_t vol_mongo_introspect_opt_query(void* obj, H5VL_subclass_t subcls,
                                        int opt_type, uint64_t* flags) {
+  lwlog_trace();
   *flags = 0;
   return NULL;
 }
