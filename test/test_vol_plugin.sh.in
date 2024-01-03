@@ -28,10 +28,10 @@ TEST_BIN=$ABS_BUILDDIR/$TEST_NAME
 FROM_DIR=$ABS_TOP_BUILDDIR/src/.libs
 case $(uname) in
     CYGWIN* )
-        MONGO_VOL_PLUGIN="$FROM_DIR/cygmongo_vol_connector*"
+        VOL_MONGO_PLUGIN="$FROM_DIR/cygmongo_vol_connector*"
         ;;
     *)
-        MONGO_VOL_PLUGIN="$FROM_DIR/libmongo_vol_connector*"
+        VOL_MONGO_PLUGIN="$FROM_DIR/libmongo_vol_connector*"
         ;;
 esac
 TEMP_PLUGIN_DIR=mongo_vol_plugin_dir
@@ -55,9 +55,9 @@ if [ $? != 0 ]; then
 fi
 
 # Copy plugin for the tests.
-$CP $MONGO_VOL_PLUGIN $TEMP_PLUGIN_DIR
+$CP $VOL_MONGO_PLUGIN $TEMP_PLUGIN_DIR
 if [ $? != 0 ]; then
-    echo "Failed to copy VOL plugin ($MONGO_VOL_PLUGIN) to test directory."
+    echo "Failed to copy VOL plugin ($VOL_MONGO_PLUGIN) to test directory."
     exit $EXIT_FAILURE
 fi
 

@@ -19,7 +19,7 @@
 #define VOL_MONGO_CONNECTOR_H
 
 /* The value must be between 256 and 65535 (inclusive) */
-#define MONGO_VOL_CONNECTOR_VALUE ((H5VL_class_value_t)12202)
-#define MONGO_VOL_CONNECTOR_NAME "vol_mongo_connector"
+#define VOL_MONGO_CONNECTOR_VALUE ((H5VL_class_value_t)12202)
+#define VOL_MONGO_CONNECTOR_NAME "vol_mongo_connector"
 
 #endif 

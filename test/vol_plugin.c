@@ -86,7 +86,7 @@
 static herr_t test_file_create_and_close() {
     TESTING("VOL file create and close");
 
-    hid_t vol_id = H5VLregister_connector_by_value(MONGO_VOL_CONNECTOR_VALUE, H5P_DEFAULT);
+    hid_t vol_id = H5VLregister_connector_by_value(VOL_MONGO_CONNECTOR_VALUE, H5P_DEFAULT);
 
     // NOTE: creating file
     hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
@@ -130,7 +130,7 @@ static herr_t test_registration_by_value() {
     TESTING("VOL registration by value");
 
     /* The VOL connector should not be registered at the start of the test */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -139,12 +139,12 @@ static herr_t test_registration_by_value() {
     }
 
     /* Register the connector by value */
-    if ((vol_id = H5VLregister_connector_by_value(MONGO_VOL_CONNECTOR_VALUE, H5P_DEFAULT)) < 0) {
+    if ((vol_id = H5VLregister_connector_by_value(VOL_MONGO_CONNECTOR_VALUE, H5P_DEFAULT)) < 0) {
         TEST_ERROR;
     }
 
     /* The connector should be registered now */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -158,7 +158,7 @@ static herr_t test_registration_by_value() {
     }
 
     /* The connector should not be registered now */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -192,7 +192,7 @@ static herr_t test_registration_by_name() {
     TESTING("VOL registration by name");
 
     /* The VOL connector should not be registered at the start of the test */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -201,12 +201,12 @@ static herr_t test_registration_by_name() {
     }
 
     /* Register the connector by name */
-    if ((vol_id = H5VLregister_connector_by_name(MONGO_VOL_CONNECTOR_NAME, H5P_DEFAULT)) < 0) {
+    if ((vol_id = H5VLregister_connector_by_name(VOL_MONGO_CONNECTOR_NAME, H5P_DEFAULT)) < 0) {
         TEST_ERROR;
     }
 
     /* The connector should be registered now */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -220,7 +220,7 @@ static herr_t test_registration_by_name() {
     }
 
     /* The connector should not be registered now */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -255,7 +255,7 @@ static herr_t test_multiple_registration() {
     TESTING("registering a VOL connector multiple times");
 
     /* The VOL connector should not be registered at the start of the test */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -265,13 +265,13 @@ static herr_t test_multiple_registration() {
 
     /* Register the connector multiple times */
     for (i = 0; i < N_REGISTRATIONS; i++) {
-        if ((vol_ids[i] = H5VLregister_connector_by_name(MONGO_VOL_CONNECTOR_NAME, H5P_DEFAULT)) < 0) {
+        if ((vol_ids[i] = H5VLregister_connector_by_name(VOL_MONGO_CONNECTOR_NAME, H5P_DEFAULT)) < 0) {
             TEST_ERROR;
         }
     }
 
     /* The connector should be registered now */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -294,7 +294,7 @@ static herr_t test_multiple_registration() {
     }
 
     /* The connector should not be registered now */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -331,7 +331,7 @@ static herr_t test_getters() {
     TESTING("VOL getters");
 
     /* The VOL connector should not be registered at the start of the test */
-    if ((is_registered = H5VLis_connector_registered_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((is_registered = H5VLis_connector_registered_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 
@@ -340,12 +340,12 @@ static herr_t test_getters() {
     }
 
     /* Register the connector by name */
-    if ((vol_id = H5VLregister_connector_by_name(MONGO_VOL_CONNECTOR_NAME, H5P_DEFAULT)) < 0) {
+    if ((vol_id = H5VLregister_connector_by_name(VOL_MONGO_CONNECTOR_NAME, H5P_DEFAULT)) < 0) {
         TEST_ERROR;
     }
 
     /* Get the connector's ID by name */
-    if ((vol_id_out = H5VLget_connector_id_by_name(MONGO_VOL_CONNECTOR_NAME)) < 0) {
+    if ((vol_id_out = H5VLget_connector_id_by_name(VOL_MONGO_CONNECTOR_NAME)) < 0) {
         TEST_ERROR;
     }
 

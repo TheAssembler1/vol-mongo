@@ -1,4 +1,5 @@
 #include "vol_mongo_connector.h"
+#include "vol_mongo_helper.h"
 #include "vol_mongo_file/vol_mongo_file.h"
 #include "vol_mongo_introspect/vol_mongo_introspect.h"
 
@@ -7,13 +8,13 @@
 #include <stdlib.h>
 
 static const H5VL_class_t vol_mongo_connector = {
-    3,                         /* VOL class struct version */
-    MONGO_VOL_CONNECTOR_VALUE, /* value                    */
-    MONGO_VOL_CONNECTOR_NAME,  /* name                     */
-    1,                         /* version                  */
-    0,                         /* capability flags         */
-    NULL,                      /* initialize               */
-    NULL,                      /* terminate                */
+    VOL_MONGO_CLASS_STRUCT_VERSION, /* VOL class struct version */
+    VOL_MONGO_CONNECTOR_VALUE,      /* value                    */
+    VOL_MONGO_CONNECTOR_NAME,       /* name                     */
+    0,                              /* version                  */
+    0,                              /* capability flags         */
+    NULL,                           /* initialize               */
+    NULL,                           /* terminate                */
     {
         /* info_cls */
         (size_t)0, /* size    */
@@ -99,9 +100,9 @@ static const H5VL_class_t vol_mongo_connector = {
     },
     {
         /* introscpect_cls */
-        NULL,                          /* get_conn_cls  */
-        NULL,                          /* get_cap_flags */
-        vol_mongo_introspect_opt_query /* opt_query     */
+        NULL,                           /* get_conn_cls  */
+        NULL,                           /* get_cap_flags */
+        vol_mongo_introspect_opt_query  /* opt_query     */
     },
     {
         /* request_cls */
@@ -128,12 +129,12 @@ static const H5VL_class_t vol_mongo_connector = {
     NULL /* optional     */
 };
 
-H5PL_type_t H5PLget_plugin_type() {
-  lwlog_trace();
-  return H5PL_TYPE_VOL;
+H5PL_type_t H5PLget_plugin_type() { 
+    lwlog_trace();
+    return H5PL_TYPE_VOL; 
 }
 
-const void* H5PLget_plugin_info() {
-  lwlog_trace();
-  return &vol_mongo_connector;
+const void* H5PLget_plugin_info() { 
+    lwlog_trace();
+    return &vol_mongo_connector; 
 }

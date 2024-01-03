@@ -1,0 +1,6 @@
+#ifndef VOL_MONGO_HELPER_H
+#define VOL_MONGO_HELPER_H
+
+#define VOL_MONGO_CLASS_STRUCT_VERSION 3
+
+#endif
