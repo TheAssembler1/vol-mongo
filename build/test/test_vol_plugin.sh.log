@@ -1,0 +1,10 @@
+Testing VOL connector plugin functionality.
+HDF5_PLUGIN_PATH = template_vol_plugin_dir
+Testing VOL registration by name                                       PASSED
+Testing VOL registration by value                                      PASSED
+Testing registering a VOL connector multiple times                     PASSED
+Testing VOL getters                                                    PASSED
+Testing VOL file create and close                                      PASSED
+All VOL connector plugin tests passed.
+All VOL plugin tests passed.
+PASS test_vol_plugin.sh (exit status: 0)
