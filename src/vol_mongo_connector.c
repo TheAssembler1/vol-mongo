@@ -1,5 +1,6 @@
 #include "vol_mongo_connector.h"
 #include "vol_mongo_helper.h"
+#include "vol_mongo_init_term/vol_mongo_init_term.h"
 #include "vol_mongo_file/vol_mongo_file.h"
 #include "vol_mongo_introspect/vol_mongo_introspect.h"
 
@@ -11,10 +12,10 @@ static const H5VL_class_t vol_mongo_connector = {
     VOL_MONGO_CLASS_STRUCT_VERSION, /* VOL class struct version */
     VOL_MONGO_CONNECTOR_VALUE,      /* value                    */
     VOL_MONGO_CONNECTOR_NAME,       /* name                     */
-    0,                              /* version                  */
-    0,                              /* capability flags         */
-    NULL,                           /* initialize               */
-    NULL,                           /* terminate                */
+    VOL_MONGO_VERSION,              /* version                  */
+    VOL_MONGO_CAPABILITY_FLAGS,     /* capability flags         */
+    vol_mongo_initialize,           /* initialize               */
+    vol_mongo_terminate,            /* terminate                */
     {
         /* info_cls */
         (size_t)0, /* size    */
