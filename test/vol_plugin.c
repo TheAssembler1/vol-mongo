@@ -393,7 +393,7 @@ int main()
     nerrors += test_registration_by_value() < 0 ? 1 : 0;
     nerrors += test_multiple_registration() < 0 ? 1 : 0;
     nerrors += test_getters() < 0 ? 1 : 0;
-    //nerrors += test_file_create_and_close() < 0 ? 1 : 0;
+    nerrors += test_file_create_and_close() < 0 ? 1 : 0;
 
     if (nerrors) {
         printf("***** %d VOL connector plugin TEST%s FAILED! *****\n", nerrors, nerrors > 1 ? "S" : "");

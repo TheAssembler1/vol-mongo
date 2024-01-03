@@ -5,6 +5,17 @@
 #include <hdf5.h>
 #include <stdlib.h>
 
+herr_t vol_mongo_file_close_pt(void* file, hid_t dxpl_id, void** req) {
+  return NULL;
+}
+
+herr_t vol_mongo_instrospect_opt_query_pt(void* obj, H5VL_subclass_t subcls,
+                                       int opt_type, uint64_t* flags) {
+  fflush(stdout);
+  *flags = 0;
+  return NULL;
+}
+
 static const H5VL_class_t vol_mongo_connector = {
     3,                            /* VOL class struct version */
     MONGO_VOL_CONNECTOR_VALUE, /* value                    */
@@ -64,11 +75,11 @@ static const H5VL_class_t vol_mongo_connector = {
     {
         /* file_cls */
         vol_mongo_file_create_pt,  /* create       */
-        NULL,                  /* open         */
-        NULL,                  /* get          */
-        NULL,                  /* specific     */
-        NULL,                  /* optional     */
-        vol_mongo_file_close_pt   /* close        */
+        NULL,                      /* open         */
+        NULL,                      /* get          */
+        NULL,                      /* specific     */
+        NULL,                      /* optional     */
+        vol_mongo_file_close_pt    /* close        */
     },
     {
         /* group_cls */
