@@ -1,5 +1,5 @@
-#ifndef VOL_MONGO_INSTROSPECT_H
-#define VOL_MONGO_INSTROSPECT_H
+#ifndef VOL_MONGO_INTROSPECT_H
+#define VOL_MONGO_INTROSPECT_H
 
 #include <hdf5.h>
 

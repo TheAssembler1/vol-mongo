@@ -1,13 +1,12 @@
 # HDF5 VOL connector mongo
 
-This is a mongo for creating an HDF5 virtual object layer (VOL) connector.
+## Confuration
 
-Copy this code into your own repository and modify the source, test, and build files as needed to implement your own functionality. This repository is listed as a mongo on github, so you should be able to rename it appropriately when you fork it (don't forget to change the VOL name and value, though).
+Replace the following (file | [line_number, ...]) with your installation of HDF5
 
-The code included in the source directory builds an "empty" VOL connector which has no functionality aside from being capable of registration. Although lacking as a "real" VOL connector, this shell can still serve as a useful test of whether dynamic plugin loading is working.
-
-NOTE: This mongo targets HDF5 1.14.0. The VOL API in HDF5 1.13.x is no longer supported for VOL connector development.
-
+- '.cland | 1, 5, 7'
+- 'CMakeLists.txt | 11'
+- 'c_cpp_properties.json | 9'
 
 ## Getting started
 
@@ -15,14 +14,6 @@ You will need a few things to build the code in this repository:
 
 * HDF5 1.14.0 or later
 * CMake (3.9 or later) or the Autotools (autoconf 2.69 or later and matching automake, etc.)
-
-### Autotools Builds
-
-1) The first thing you need to do is run the autogen.sh script located in the source root. This will run the autotools and generate the build files.
-
-2) Next, switch to your build directory and run configure. You might need to specify the path to a VOL-enabled HDF5 (version 1.14.0 or later) using the --with-hdf5 option. Note that --with-hdf5 needs you to specify the path to the (p)h5cc file (including h5cc).
-
-3) Once configured, you should be able to run make to build the mongo. Running 'make check' will build the test program and run the test script. The test script and associated program simply make sure that the VOL connector can be registered and loaded dynamically.
 
 ### CMake Builds
 
