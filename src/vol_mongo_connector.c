@@ -1,20 +1,10 @@
 #include "vol_mongo_connector.h"
 #include "vol_mongo_file/vol_mongo_file.h"
+#include "vol_mongo_introspect/vol_mongo_introspect.h"
 
 #include <complex.h>
 #include <hdf5.h>
 #include <stdlib.h>
-
-herr_t vol_mongo_file_close_pt(void* file, hid_t dxpl_id, void** req) {
-  return NULL;
-}
-
-herr_t vol_mongo_instrospect_opt_query_pt(void* obj, H5VL_subclass_t subcls,
-                                       int opt_type, uint64_t* flags) {
-  fflush(stdout);
-  *flags = 0;
-  return NULL;
-}
 
 static const H5VL_class_t vol_mongo_connector = {
     3,                            /* VOL class struct version */
@@ -111,7 +101,7 @@ static const H5VL_class_t vol_mongo_connector = {
         /* introscpect_cls */
         NULL,                           /* get_conn_cls  */
         NULL,                           /* get_cap_flags */
-        vol_mongo_instrospect_opt_query_pt /* opt_query     */
+        vol_mongo_introspect_opt_query_pt /* opt_query     */
     },
     {
         /* request_cls */
