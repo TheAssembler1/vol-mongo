@@ -1,0 +1,11 @@
+{
+  "compile_commands_dir": "${workspaceRoot}",
+  "compile_flags": [
+    "-I/usr/local/hdf5/include",
+    "-L/usr/local/hdf5/lib",
+    "-lhdf5",
+    "/usr/local/hdf5/bin/h5cc"
+  ],
+  "fallback-style": "Google"
+}
+

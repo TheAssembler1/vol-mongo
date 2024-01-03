@@ -16,6 +16,8 @@
  *              dynamically-loaded plugin.
  */
 
+#include "H5Fpublic.h"
+#include "H5Ppublic.h"
 #include "template_vol_connector.h"
 
 #include <hdf5.h>
@@ -90,6 +92,45 @@
         puts(s);             \
         goto error;          \
     }
+
+/*-------------------------------------------------------------------------
+ * Function:    test_registration_by_value()
+ * Purpose:     Tests if we can creat file with VOL
+ * Return:      SUCCEED/FAIL
+ *-------------------------------------------------------------------------
+ */
+static herr_t test_file_create_and_close() {
+    TESTING("VOL file create and close");
+
+    hid_t vol_id = H5VLregister_connector_by_value(TEMPLATE_VOL_CONNECTOR_VALUE, H5P_DEFAULT);
+
+    // NOTE: creating file
+    hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
+    H5Pset_vol(fapl_id, vol_id, NULL);
+    hid_t file_id = H5Fcreate("test.h5", H5F_ACC_TRUNC, H5P_DEFAULT, fapl_id);
+   
+    if (file_id < 0) {
+        FAIL_PUTS_ERROR("FAILED TO CREATE FILE");        
+    }
+
+    herr_t file_status = H5Fclose(file_id);
+
+    if (file_status < 0) {
+        FAIL_PUTS_ERROR("FAILED TO CLOSE FILE");
+    }
+
+    PASSED();
+    return SUCCEED;
+error:
+    H5E_BEGIN_TRY {
+        H5Fclose(file_id);
+        H5VLunregister_connector(vol_id);
+    }
+
+    H5E_END_TRY;
+    return FAIL;
+
+}
 
 /*-------------------------------------------------------------------------
  * Function:    test_registration_by_value()
@@ -373,6 +414,7 @@ int main()
     nerrors += test_registration_by_value() < 0 ? 1 : 0;
     nerrors += test_multiple_registration() < 0 ? 1 : 0;
     nerrors += test_getters() < 0 ? 1 : 0;
+    nerrors += test_file_create_and_close() < 0 ? 1 : 0;
 
     if (nerrors) {
         printf("***** %d VOL connector plugin TEST%s FAILED! *****\n", nerrors, nerrors > 1 ? "S" : "");

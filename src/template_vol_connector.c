@@ -16,11 +16,42 @@
  */
 
 /* This connector's header */
+#include "H5VLpublic.h"
 #include "template_vol_connector.h"
 
-#include <hdf5.h>
 #include <H5PLextern.h>
+#include <complex.h>
+#include <hdf5.h>
 #include <stdlib.h>
+
+/*
+typedef struct H5VL_file_class_t {
+    void *(*create)(const char *name, unsigned flags, hid_t fcpl_id, hid_t
+fapl_id, hid_t dxpl_id, void **req); void *(*open)(const char *name, unsigned
+flags, hid_t fapl_id, hid_t dxpl_id, void **req); herr_t (*get)(void *obj,
+H5VL_file_get_args_t *args, hid_t dxpl_id, void **req); herr_t (*specific)(void
+*obj, H5VL_file_specific_args_t *args, hid_t dxpl_id, void **req); herr_t
+(*optional)(void *obj, H5VL_optional_args_t *args, hid_t dxpl_id, void **req);
+    herr_t (*close)(void *file, hid_t dxpl_id, void **req);
+} H5VL_file_class_t;
+*/
+
+void* vol_mongo_file_create(const char* name, unsigned flags, hid_t fcpl_id,
+                            hid_t fapl_id, hid_t dxpl_id, void** req) {
+  fflush(stdout);
+  return (void*)1;
+}
+
+herr_t vol_mongo_file_close(void* file, hid_t dxpl_id, void** req) {
+  return NULL;
+}
+
+herr_t vol_mongo_instrospect_opt_query(void* obj, H5VL_subclass_t subcls,
+                                       int opt_type, uint64_t* flags) {
+  fflush(stdout);
+  *flags = 0;
+  return NULL;
+}
 
 /* The VOL class struct */
 static const H5VL_class_t template_class_g = {
@@ -81,12 +112,12 @@ static const H5VL_class_t template_class_g = {
     },
     {
         /* file_cls */
-        NULL, /* create       */
-        NULL, /* open         */
-        NULL, /* get          */
-        NULL, /* specific     */
-        NULL, /* optional     */
-        NULL  /* close        */
+        vol_mongo_file_create, /* create       */
+        NULL,                  /* open         */
+        NULL,                  /* get          */
+        NULL,                  /* specific     */
+        NULL,                  /* optional     */
+        vol_mongo_file_close   /* close        */
     },
     {
         /* group_cls */
@@ -116,9 +147,9 @@ static const H5VL_class_t template_class_g = {
     },
     {
         /* introscpect_cls */
-        NULL, /* get_conn_cls  */
-        NULL, /* get_cap_flags */
-        NULL  /* opt_query     */
+        NULL,                           /* get_conn_cls  */
+        NULL,                           /* get_cap_flags */
+        vol_mongo_instrospect_opt_query /* opt_query     */
     },
     {
         /* request_cls */
@@ -148,10 +179,6 @@ static const H5VL_class_t template_class_g = {
 /* These two functions are necessary to load this plugin using
  * the HDF5 library.
  */
-H5PL_type_t H5PLget_plugin_type() { 
-    return H5PL_TYPE_VOL; 
-}
+H5PL_type_t H5PLget_plugin_type() { return H5PL_TYPE_VOL; }
 
-const void *H5PLget_plugin_info() { 
-    return &template_class_g; 
-}
+const void* H5PLget_plugin_info() { return &template_class_g; }

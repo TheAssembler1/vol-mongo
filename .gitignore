@@ -9,3 +9,4 @@ configure
 # file extensions
 *.m4
 *.in
+*~
