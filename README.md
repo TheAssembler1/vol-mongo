@@ -4,9 +4,9 @@
 
 Replace the following (file | [line_number, ...]) with your installation of HDF5
 
-- '.cland | 1, 5, 7'
-- 'CMakeLists.txt | 11'
-- 'c_cpp_properties.json | 9'
+- `.cland | 1, 5, 7`
+- `CMakeLists.txt | 11`
+- `c_cpp_properties.json | 9`
 
 ## Getting started
 
