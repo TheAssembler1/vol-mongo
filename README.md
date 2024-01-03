@@ -2,7 +2,7 @@
 
 ## Confuration
 
-Replace the following (file | [line_number, ...]) with your installation of HDF5
+Replace the following `file | [line_number, ...]` with your installation of HDF5
 
 - `.cland | 1, 5, 7`
 - `CMakeLists.txt | 11`
