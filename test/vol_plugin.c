@@ -34,9 +34,7 @@
  * spaces.  If the h5_errors() is used for automatic error handling then
  * the H5_FAILED() macro is invoked automatically when an API function fails.
  */
-
 #define AT() printf("   at %s:%d...\n", __FILE__, __LINE__);
-
 #define TESTING(WHAT) {                \
         printf("Testing %-62s", WHAT); \
         fflush(stdout);                \
@@ -153,7 +151,6 @@ error:
 
     H5E_END_TRY;
     return FAIL;
-
 } 
 
 /*-------------------------------------------------------------------------
@@ -385,5 +382,4 @@ int main()
     puts("All VOL connector plugin tests passed.");
 
     exit(EXIT_SUCCESS);
-
-} /* end main() */
+}

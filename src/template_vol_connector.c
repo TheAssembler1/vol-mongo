@@ -148,6 +148,10 @@ static const H5VL_class_t template_class_g = {
 /* These two functions are necessary to load this plugin using
  * the HDF5 library.
  */
+H5PL_type_t H5PLget_plugin_type() { 
+    return H5PL_TYPE_VOL; 
+}
 
-H5PL_type_t H5PLget_plugin_type(void) { return H5PL_TYPE_VOL; }
-const void *H5PLget_plugin_info(void) { return &template_class_g; }
+const void *H5PLget_plugin_info() { 
+    return &template_class_g; 
+}
