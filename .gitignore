@@ -2,6 +2,7 @@
 build
 m4
 *~
+bin
 
 # http://www.gnu.org/software/automake
 Makefile.in
