@@ -15,8 +15,5 @@ find_package(HDF5 1.14.3 COMPONENTS C REQUIRED)
 link_directories(${HDF5_LIBRARY_DIRS})
 include_directories(${HDF5_INCLUDE_DIR})
 
-# Print information for debugging
-message(DEPRECATION "Include: ${HDF5_INCLUDE_DIR}")
-
 add_subdirectory(src)
 add_subdirectory(test)

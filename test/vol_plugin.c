@@ -17,27 +17,32 @@
  */
 #define AT() printf("   at %s:%d...\n", __FILE__, __LINE__);
 #define TESTING(WHAT) {                \
-        printf("Testing %-62s", WHAT); \
+        printf("----------------------------------------------------------\n"); \
+        printf("Testing %-62s\n", WHAT); \
         fflush(stdout);                \
     }
 
 #define PASSED() {       \
-        puts(" PASSED"); \
+        puts("PASSED"); \
+        printf("----------------------------------------------------------\n"); \
         fflush(stdout);  \
     }
 
 #define H5_FAILED() {     \
-        puts("*FAILED*"); \
+        puts("*FAILED*\n"); \
+        printf("----------------------------------------------------------\n"); \
         fflush(stdout);   \
     }
 
 #define H5_WARNING() {     \
-        puts("*WARNING*"); \
+        puts("*WARNING*\n"); \
+        printf("----------------------------------------------------------\n"); \
         fflush(stdout);    \
     }
 
 #define SKIPPED() {      \
-        puts(" -SKIP-"); \
+        puts(" -SKIP-\n"); \
+        printf("----------------------------------------------------------\n"); \
         fflush(stdout);  \
     }
 
