@@ -18,6 +18,7 @@
 /* This connector's header */
 #include "H5VLpublic.h"
 #include "template_vol_connector.h"
+#include "vol_mongo_file.h"
 
 #include <H5PLextern.h>
 #include <complex.h>
@@ -36,11 +37,6 @@ H5VL_file_get_args_t *args, hid_t dxpl_id, void **req); herr_t (*specific)(void
 } H5VL_file_class_t;
 */
 
-void* vol_mongo_file_create(const char* name, unsigned flags, hid_t fcpl_id,
-                            hid_t fapl_id, hid_t dxpl_id, void** req) {
-  fflush(stdout);
-  return (void*)1;
-}
 
 herr_t vol_mongo_file_close(void* file, hid_t dxpl_id, void** req) {
   return NULL;
