@@ -28,13 +28,13 @@ TEST_BIN=$ABS_BUILDDIR/$TEST_NAME
 FROM_DIR=$ABS_TOP_BUILDDIR/src/.libs
 case $(uname) in
     CYGWIN* )
-        TEMPLATE_VOL_PLUGIN="$FROM_DIR/cygtemplate_vol_connector*"
+        MONGO_VOL_PLUGIN="$FROM_DIR/cygmongo_vol_connector*"
         ;;
     *)
-        TEMPLATE_VOL_PLUGIN="$FROM_DIR/libtemplate_vol_connector*"
+        MONGO_VOL_PLUGIN="$FROM_DIR/libmongo_vol_connector*"
         ;;
 esac
-TEMP_PLUGIN_DIR=template_vol_plugin_dir
+TEMP_PLUGIN_DIR=mongo_vol_plugin_dir
 CP="cp -p"    # Use -p to preserve mode,ownership, timestamps
 RM="rm -rf"
 
@@ -55,9 +55,9 @@ if [ $? != 0 ]; then
 fi
 
 # Copy plugin for the tests.
-$CP $TEMPLATE_VOL_PLUGIN $TEMP_PLUGIN_DIR
+$CP $MONGO_VOL_PLUGIN $TEMP_PLUGIN_DIR
 if [ $? != 0 ]; then
-    echo "Failed to copy VOL plugin ($TEMPLATE_VOL_PLUGIN) to test directory."
+    echo "Failed to copy VOL plugin ($MONGO_VOL_PLUGIN) to test directory."
     exit $EXIT_FAILURE
 fi
 

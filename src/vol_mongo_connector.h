@@ -11,15 +11,15 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /* Purpose:     A simple virtual object layer (VOL) connector with almost no
- *              functionality that can serve as a template for creating other
+ *              functionality that can serve as a mongo for creating other
  *              connectors.
  */
 
-#ifndef _template_vol_connector_H
-#define _template_vol_connector_H
+#ifndef VOL_MONGO_CONNECTOR_H
+#define VOL_MONGO_CONNECTOR_H
 
 /* The value must be between 256 and 65535 (inclusive) */
-#define TEMPLATE_VOL_CONNECTOR_VALUE ((H5VL_class_value_t)12202)
-#define TEMPLATE_VOL_CONNECTOR_NAME "template_vol_connector"
+#define MONGO_VOL_CONNECTOR_VALUE ((H5VL_class_value_t)12202)
+#define MONGO_VOL_CONNECTOR_NAME "vol_mongo_connector"
 
-#endif /* _template_vol_connector_H */
+#endif 

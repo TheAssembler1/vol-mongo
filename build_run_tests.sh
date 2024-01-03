@@ -1,7 +1,6 @@
-./restore.sh
-./autogen.sh
 cd build
-../configure --with-hdf5=/usr/local/hdf5/bin/h5cc
-make check
-cat test/test_vol_plugin.sh.log
+cmake ..
+make
+make test 
+cat Testing/Temporary/LastTest.log
 cd ..

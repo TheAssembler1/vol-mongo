@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**"
             ],
             "defines": [],
-            "compilerPath": "/usr/local/hdf5/bin/h5cc",
+            "compilerPath": "/usr/local/HDF_Group/HDF5/1.14.3/bin/h5cc",
             "cStandard": "c17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64"

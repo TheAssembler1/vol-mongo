@@ -2,8 +2,8 @@
 ##
 
 AC_PREREQ([2.69])
-AC_INIT([TEMPLATE VOL], [1.0.0], [help@hdfgroup.org])
-AC_CONFIG_SRCDIR([src/template_vol_connector.c])
+AC_INIT([MONGO VOL], [1.0.0], [help@hdfgroup.org])
+AC_CONFIG_SRCDIR([src/vol_mongo_connector.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Dump all the weird scripts in bin/

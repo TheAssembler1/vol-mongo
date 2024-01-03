@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "vol_mongo_connector.h": "c",
+        "h5ppublic.h": "c"
+    }
+}
