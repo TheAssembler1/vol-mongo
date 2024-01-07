@@ -14,21 +14,15 @@ get_current_date() {
 generate_commit_message() {
   echo "generating commit message"
   local file_changes=$(git status -s)
-  local prompt="reviewing file changes:\n\n$file_changes\n\nplease provide a commit message:\n"
-
-  echo "iterating over changes"
-  git status -s | while IFS= read -r line; do
-    prompt+="comment on change: $line\n"
-  done
-
-
-  echo "prompt before API call:"
-  echo "$prompt"
+  local prompt="Reviewing file changes:\n\n$file_changes\n\nPlease provide a commit message:\n"
 
   # Generate commit message using ChatGPT
   local commit_message=$(echo -e "$prompt" | openai api completions.create --model text-davinci-003 --temperature 0.7)
 
-  echo "generated commit message:"
+  echo "Prompt before API call:"
+  echo -e "$prompt"
+
+  echo "Generated commit message:"
   echo "$commit_message"
 
   # Return the generated commit message
@@ -40,9 +34,9 @@ git add .
 
 # Check if there are any changes
 if [[ -n $(git status -s) ]]; then
-  echo "changes detected"
+  echo "Changes detected"
 
-  generate_commit_message
+  # Generate a commit message using ChatGPT
   commit_message=$(generate_commit_message)
 
   if [[ -n "$commit_message" ]]; then
@@ -51,8 +45,8 @@ if [[ -n $(git status -s) ]]; then
     echo "pushing changes"
     git push
   else
-    echo "No commit message provided changes not committed"
+    echo "No commit message provided. Changes not committed."
   fi
 else
-  echo "No changes detected nothing to commit"
+  echo "No changes detected. Nothing to commit."
 fi
