@@ -14,7 +14,7 @@ get_current_date() {
 generate_commit_message() {
   echo "generating commit message"
   local file_changes=$(git status -s)
-  local prompt="Reviewing file changes:\n\n$file_changes\n\nPlease provide a commit message:\n"
+  local prompt="Reviewing file changes:\n\n$file_changes\n\nDescribe the changes and provide a commit message:\n"
 
   # Generate commit message using ChatGPT
   local commit_message=$(echo -e "$prompt" | openai api completions.create --model text-davinci-003 --temperature 0.7)
