@@ -10,11 +10,11 @@ get_current_date() {
   date +"%Y-%m-%d %H:%M:%S"
 }
 
-# Function to generate a commit message using ChatGPT
-generate_commit_message() {
-  echo "generating commit message"
-  local file_changes=$(git status -s)
-  local prompt="Reviewing file changes:\n\n$file_changes\n\nDescribe the changes and provide a commit message:\n"
+# Function to generate a commit message for a specific file using ChatGPT
+generate_commit_message_for_file() {
+  local file=$1
+  echo "generating commit message for file: $file"
+  local prompt="Reviewing changes in file $file:\n\n$(git diff $file)\n\nDescribe the changes and provide a commit message for $file:\n"
 
   # Generate commit message using ChatGPT
   local commit_message=$(echo -e "$prompt" | openai api completions.create --model text-davinci-003 --temperature 0.7)
@@ -36,17 +36,20 @@ git add .
 if [[ -n $(git status -s) ]]; then
   echo "Changes detected"
 
-  # Generate a commit message using ChatGPT
-  commit_message=$(generate_commit_message)
+  # Loop through each file with changes
+  while IFS= read -r file; do
+    commit_message=$(generate_commit_message_for_file "$file")
 
-  if [[ -n "$commit_message" ]]; then
-    echo "committing changes"
-    git commit -m "$commit_message ($(get_current_date))"
-    echo "pushing changes"
-    git push
-  else
-    echo "No commit message provided. Changes not committed."
-  fi
+    if [[ -n "$commit_message" ]]; then
+      echo "committing changes for file: $file"
+      git commit -m "$commit_message ($(get_current_date))" -- "$file"
+    else
+      echo "No commit message provided for file $file. Changes not committed."
+    fi
+  done < <(git diff --name-only)
+
+  echo "pushing changes"
+  git push
 else
   echo "No changes detected. Nothing to commit."
 fi
