@@ -2,11 +2,20 @@
 
 ## Confuration
 
+I recommend building whatever HDF5 version you want to use from source
 Replace the following `file | [line_number, ...]` with your installation of HDF5
 
 - `.cland | 1, 5, 7`
 - `CMakeLists.txt | 11`
 - `c_cpp_properties.json | 9`
+
+For libsson and mongo db installation is as simple as 
+
+`apt install libbson-dev`
+`apt install libmongoc-dev`
+`apt install libicu-dev`
+
+To run mongodb locally [installation](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-debian/)
 
 ## Getting started
 
