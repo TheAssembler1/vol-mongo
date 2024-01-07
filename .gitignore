@@ -3,6 +3,7 @@ build
 m4
 *~
 bin
+init_secrets.sh
 
 # http://www.gnu.org/software/automake
 Makefile.in
